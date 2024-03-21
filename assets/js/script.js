@@ -1,29 +1,6 @@
 //store question text, options and answers in an array
-const questions = [
-  {
-    questionText:
-      "What best practices of the following list are best practices for SAPUI?",
-    questionHint: "There are 4 correct answers to this question.",
-    correctAns: [
-      "Minimize the code in the index.html",
-      "Make use of patterns",
-      "Use asynchronous model definition in your JavaScript code",
-      "Describe your app by a set of metadata",
-    ],
-    wrongAns: ["Use synchronous model definition syntax (SMD)"],
-  },
-  {
-    questionText:
-      "What best practices of the following list are best practices for SAPUI?",
-    questionHint: "There are 4 correct answers to this question.",
-    correctAns: [
-      "Minimize the code in the index.html",
-      "Make use of patterns",
-      "Use asynchronous model definition in your JavaScript code",
-      "Describe your app by a set of metadata",
-    ],
-    wrongAns: ["Use synchronous model definition syntax (SMD)"],
-  },
+let questions = [
+ 
 ];
 
 var chosenQuestions = [];
@@ -375,6 +352,7 @@ function cleanup() {
 }
 
 function getQuestions() {
+  questions = questions1;
   const questionLists = [questions];
   const chosenList =
     questionLists[Math.floor(Math.random() * questionLists.length)];
