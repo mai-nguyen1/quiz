@@ -23,7 +23,7 @@ const questions = [
       "Describe your app by a set of metadata",
     ],
     wrongAns: ["Use synchronous model definition syntax (SMD)"],
-  },  
+  },
 ];
 
 var chosenQuestions = [];
@@ -34,6 +34,8 @@ const questionCard = document.querySelector("#question-card");
 const scoreCard = document.querySelector("#score-card");
 const leaderboardCard = document.querySelector("#leaderboard-card");
 var score = 0;
+var delay = 5000;
+var etag = 0;
 
 var correctAns = [];
 var wrongAns = [];
@@ -63,6 +65,7 @@ var currentQuestion;
 document.querySelector("#start-button").addEventListener("click", startQuiz);
 
 function startQuiz() {
+  etag = Date.now();
   //hide any visible cards, show the question card
   hideCards();
   questionCard.removeAttribute("hidden");
@@ -81,6 +84,12 @@ function startQuiz() {
   //invoke displayTime here to ensure time appears on the page as soon as the start button is clicked, not after 1 second
   displayTime();
   document.querySelector("#check").disabled = false;
+
+  const delayElem = document.querySelector("#delay");
+  const currentDelay = Number(delayElem.value) * 1000;
+  if (!isNaN(currentDelay) && currentDelay > 1000) {
+    delay = currentDelay;
+  }
 }
 
 //reduce time by 1 and display new value, if time runs out then end quiz
@@ -105,8 +114,8 @@ function displayQuestion() {
   }
   cleanup();
   let question = chosenQuestions[currentQuestion];
-  document.querySelector("#question-text").innerText = (currentQuestion + 1) + ". " 
-                                                     + question.questionText;
+  document.querySelector('#question-number').innerText = `${currentQuestion + 1}/${chosenQuestions.length}`;
+  document.querySelector("#question-text").innerText = question.questionText;
   document.querySelector("#caption").innerText = question.questionHint;
   correctAns = question.correctAns.filter((v) => v.length > 0);
   wrongAns = question.wrongAns.filter((v) => v.length > 0);
@@ -123,7 +132,6 @@ function displayQuestion() {
       btn.style.display = "block";
     }
   }
-
 }
 
 //behaviour when an answer button is clicked: click event bubbles up to div with id "quiz-options"
@@ -145,30 +153,39 @@ function checkAnswer(eventObject) {
   if (optionIsCorrect()) {
     resultText.textContent = "Correct!";
     score++;
-    setTimeout(hideResultText, 1000);
   } else {
     resultText.textContent = "Incorrect!";
-    setTimeout(hideResultText, 1000);
-    if (time >= 10) {
-      time = time - 10;
-      displayTime();
+  }
+  for (let i = 0; i < 5; i++) {
+    const btn = document.querySelector("#option" + i);
+    btn.classList.remove("chosen");
+    if (correctAns.includes(btn.innerText)) {
+      btn.classList.add("right");
     } else {
-      //if time is less than 10, display time as 0 and end quiz
-      //time is set to zero in this case to avoid displaying a negative number in cases where a wrong answer is submitted with < 10 seconds left on the timer
-      time = 0;
-      displayTime();
-      endQuiz();
+      btn.classList.add("wrong");
     }
   }
-
-  //increment current question by 1
-  currentQuestion++;
-  //if we have not run out of questions then display next question, else end quiz
-  if (currentQuestion < questions.length) {
-    displayQuestion();
-  } else {
-    endQuiz();
-  }
+  const f = function (t = 0, currentEtag = 0) {
+    if (currentEtag !== etag) {
+      return; // prevent side effect
+    }
+    if (t <= 0) {
+      document.querySelector('#check').innerText = 'Check Answer';
+      hideResultText();
+      //increment current question by 1
+      currentQuestion++;
+      //if we have not run out of questions then display next question, else end quiz
+      if (currentQuestion < chosenQuestions.length) {
+        displayQuestion();
+      } else {
+        endQuiz();
+      }
+      return;
+    }
+    document.querySelector('#check').innerText = `Check Answer (${t / 1000})`;
+    setTimeout(() => f(t - 1000, currentEtag), t > 1000 ? 1000 : t);
+  };
+  f(delay, etag);
 }
 
 //display scorecard and hide other divs
@@ -343,15 +360,18 @@ function shuffle(array) {
 
 function cleanup() {
   for (let i = 0; i < 5; i++) {
-    const btn = document.querySelector('#option' + i);
-    btn.innerText = '';
+    const btn = document.querySelector("#option" + i);
+    btn.innerText = "";
     btn.style.display = "block";
-    btn.classList.remove('chosen');
+    btn.classList.remove("chosen");
+    btn.classList.remove("right");
+    btn.classList.remove("wrong");
   }
   currentAns.clear();
   correctAns = [];
   wrongAns = [];
   document.querySelector("#check").disabled = false;
+  document.querySelector('#check').innerText = 'Check Answer';
 }
 
 function getQuestions() {
@@ -359,5 +379,10 @@ function getQuestions() {
   const chosenList =
     questionLists[Math.floor(Math.random() * questionLists.length)];
   chosenQuestions = chosenList.map((v) => v); // clone
-  shuffle(chosenQuestions);
+  const tqElem = document.querySelector("#total-question");
+  let total = Number(tqElem.value);
+  if (isNaN(total) || total < 1 || total > chosenQuestions.length) {
+    total = chosenQuestions.length;
+  }
+  chosenQuestions = shuffle(chosenQuestions).slice(0, total);
 }

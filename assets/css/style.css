@@ -45,6 +45,14 @@ main {
   background-color: #835521;
 }
 
+.button.right {
+  background-color: green;
+}
+
+.button.wrong {
+  background-color: red;
+}
+
 .inline-buttons {
   display: inline-flex;
 }
@@ -53,10 +61,10 @@ main {
 
 .card {
   max-width: 80%;
-  margin-top: 15vh;
+  margin-top: 5vh;
   border: solid;
   border-width: 2px;
-  padding: 5vw;
+  padding: 3vw;
   border-radius: 30px;
   border-color: lightgray;
   box-shadow: 10px 5px 5px lightgray;
