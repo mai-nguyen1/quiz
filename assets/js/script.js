@@ -352,8 +352,7 @@ function cleanup() {
 }
 
 function getQuestions() {
-  questions = questions1;
-  const questionLists = [questions];
+  const questionLists = [questions00, questions01];
   const chosenList =
     questionLists[Math.floor(Math.random() * questionLists.length)];
   chosenQuestions = chosenList.map((v) => v); // clone
