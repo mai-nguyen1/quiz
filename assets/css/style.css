@@ -41,6 +41,14 @@ main {
   border: none;
 }
 
+.button.check {
+  background-color: black;
+}
+
+.button:disabled {
+  background-color: gray;
+}
+
 .button.chosen {
   background-color: #835521;
 }
@@ -64,7 +72,7 @@ main {
   margin-top: 5vh;
   border: solid;
   border-width: 2px;
-  padding: 3vw;
+  padding: 5vw;
   border-radius: 30px;
   border-color: lightgray;
   box-shadow: 10px 5px 5px lightgray;

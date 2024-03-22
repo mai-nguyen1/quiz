@@ -1,9 +1,8 @@
 //store question text, options and answers in an array
-let questions = [
- 
-];
+let questions = [];
 
 var chosenQuestions = [];
+var unclearedQuestions = [];
 
 //select each card div by id and assign to variables
 const startCard = document.querySelector("#start-card");
@@ -11,7 +10,7 @@ const questionCard = document.querySelector("#question-card");
 const scoreCard = document.querySelector("#score-card");
 const leaderboardCard = document.querySelector("#leaderboard-card");
 var score = 0;
-var delay = 5000;
+var delay = 1000;
 var etag = 0;
 
 var correctAns = [];
@@ -41,8 +40,10 @@ var currentQuestion;
 
 document.querySelector("#start-button").addEventListener("click", startQuiz);
 
-function startQuiz() {
+function startQuiz(event, rewinded = false) {
   etag = Date.now();
+  chosenQuestions = rewinded ? shuffle(unclearedQuestions) : [];
+  unclearedQuestions = [];
   //hide any visible cards, show the question card
   hideCards();
   questionCard.removeAttribute("hidden");
@@ -86,12 +87,14 @@ function displayTime() {
 
 //display the question and answer options for the current question
 function displayQuestion() {
-  if (chosenQuestions.length == 0) {
+  if (chosenQuestions.length < 1) {
     getQuestions();
   }
   cleanup();
   let question = chosenQuestions[currentQuestion];
-  document.querySelector('#question-number').innerText = `${currentQuestion + 1}/${chosenQuestions.length}`;
+  document.querySelector("#question-number").innerText = `${
+    currentQuestion + 1
+  }/${chosenQuestions.length}`;
   document.querySelector("#question-text").innerText = question.questionText;
   document.querySelector("#caption").innerText = question.questionHint;
   correctAns = question.correctAns.filter((v) => v.length > 0);
@@ -132,6 +135,7 @@ function checkAnswer(eventObject) {
     score++;
   } else {
     resultText.textContent = "Incorrect!";
+    unclearedQuestions.push(chosenQuestions[currentQuestion]);
   }
   for (let i = 0; i < 5; i++) {
     const btn = document.querySelector("#option" + i);
@@ -147,7 +151,7 @@ function checkAnswer(eventObject) {
       return; // prevent side effect
     }
     if (t <= 0) {
-      document.querySelector('#check').innerText = 'Check Answer';
+      document.querySelector("#check").innerText = "Check Answer";
       hideResultText();
       //increment current question by 1
       currentQuestion++;
@@ -159,7 +163,7 @@ function checkAnswer(eventObject) {
       }
       return;
     }
-    document.querySelector('#check').innerText = `Check Answer (${t / 1000})`;
+    document.querySelector("#check").innerText = `Check Answer (${t / 1000})`;
     setTimeout(() => f(t - 1000, currentEtag), t > 1000 ? 1000 : t);
   };
   f(delay, etag);
@@ -196,6 +200,7 @@ function storeScore(event) {
   let leaderboardItem = {
     initials: inputElement.value,
     score: score,
+    total: chosenQuestions.length,
   };
 
   updateStoredLeaderboard(leaderboardItem);
@@ -235,8 +240,7 @@ function renderLeaderboard() {
   for (let i = 0; i < sortedLeaderboardArray.length; i++) {
     let leaderboardEntry = sortedLeaderboardArray[i];
     let newListItem = document.createElement("li");
-    newListItem.textContent =
-      leaderboardEntry.initials + " - " + leaderboardEntry.score;
+    newListItem.textContent = `${leaderboardEntry.initials} - ${leaderboardEntry.score}/${leaderboardEntry.total}`;
     highscoreList.append(newListItem);
   }
 }
@@ -269,6 +273,11 @@ backButton.addEventListener("click", returnToStart);
 //Hide leaderboard card show start card
 function returnToStart() {
   hideCards();
+  const rewindBtn = document.querySelector("#rewind");
+  const uncleared = unclearedQuestions.length;
+  rewindBtn.disabled = uncleared < 1;
+  rewindBtn.innerText = `Rewind (${uncleared})`;
+
   startCard.removeAttribute("hidden");
 }
 
@@ -348,7 +357,11 @@ function cleanup() {
   correctAns = [];
   wrongAns = [];
   document.querySelector("#check").disabled = false;
-  document.querySelector('#check').innerText = 'Check Answer';
+  document.querySelector("#check").innerText = "Check Answer";
+}
+
+function rewind() {
+  if (unclearedQuestions.length > 0) startQuiz(null, true);
 }
 
 function getQuestions() {

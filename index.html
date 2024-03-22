@@ -26,6 +26,7 @@
             <label for="delay">Delay: </label><input type="number" value="5" id="delay" placeholder="Delay" max="60" min="1" required/><span> second(s)</span>           
             <p></p>
             <button id=start-button class="button">Start Quiz</button>
+            <button id=rewind class="button" style="float: right; clear: none;" disabled onclick="rewind()">Rewind (0)</button>
         </div>
 
         <div hidden id=question-card class="card">
@@ -39,7 +40,7 @@
                 <button id="option2" class="button option-button" onclick="onChoose(this)"></button>
                 <button id="option3" class="button option-button" onclick="onChoose(this)"></button>
                 <button id="option4" class="button option-button" onclick="onChoose(this)"></button>
-                <button id="check" style="float: right;" onclick="checkAnswer(this)">Check Answer</button>
+                <button id="check" class="button check" style="float: right;" onclick="checkAnswer(this)">Check Answer</button>
             </div>
 
             <div id=result-div>
