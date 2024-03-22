@@ -365,9 +365,10 @@ function rewind() {
 }
 
 function getQuestions() {
-  const questionLists = [questions00, questions01];
-  const chosenList =
-    questionLists[Math.floor(Math.random() * questionLists.length)];
+  const questionLists = [questions00, questions01, questions02];
+  const chosen = Math.floor(Math.random() * questionLists.length);
+  const chosenList = questionLists[chosen];
+  console.log("questions", chosen);
   chosenQuestions = chosenList.map((v) => v); // clone
   const tqElem = document.querySelector("#total-question");
   let total = Number(tqElem.value);
