@@ -1,10 +1,8 @@
-//store question text, options and answers in an array
-let questions = [];
+var questionLists = [];
 
 var chosenQuestions = [];
 var unclearedQuestions = [];
 
-//select each card div by id and assign to variables
 const startCard = document.querySelector("#start-card");
 const questionCard = document.querySelector("#question-card");
 const scoreCard = document.querySelector("#score-card");
@@ -17,7 +15,6 @@ var correctAns = [];
 var wrongAns = [];
 const currentAns = new Set();
 
-//hide all cards
 function hideCards() {
   startCard.setAttribute("hidden", true);
   questionCard.setAttribute("hidden", true);
@@ -370,7 +367,6 @@ function rewind() {
 }
 
 function getQuestions() {
-  const questionLists = [questions00, questions01, questions02];
   const chosen = Math.floor(Math.random() * questionLists.length);
   const chosenList = questionLists[chosen];
   console.log("questions", chosen);

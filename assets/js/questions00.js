@@ -1131,3 +1131,7 @@ const questions00 = [
     ],
   },
 ];
+
+questionLists
+  ? questionLists.push(questions00)
+  : (questionLists = [questions00]);

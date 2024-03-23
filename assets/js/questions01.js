@@ -314,8 +314,7 @@ const questions01 = [
       "Define settings using transaction /UI2/FLP_SYS CONF.",
     ],
     wrongAns: [
-      "Use the configuration file to define URL parameters to enable/disable features when starting the",
-      "SAP Fiori Launchpad.",
+      "Use the configuration file to define URL parameters to enable/disable features when starting the SAP Fiori Launchpad.",
     ],
   },
   {
@@ -810,3 +809,7 @@ const questions01 = [
     wrongAns: ["SmartTable", "SmartForm", "SmartFilterBar"],
   },
 ];
+
+questionLists
+  ? questionLists.push(questions01)
+  : (questionLists = [questions01]);

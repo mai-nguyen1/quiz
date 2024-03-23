@@ -95,8 +95,8 @@ const questions02 = [
     questionText:
       "Which tool can you use to generate SAPUI5 coding that is based on prototypes?",
     questionHint: "Please choose the correct answer.",
-    correctAns: [],
-    wrongAns: ["SAP WEB IDE", "SAP Build", "Adobe Flash", "UI Theme Designer"],
+    correctAns: ["SAP WEB IDE"],
+    wrongAns: ["SAP Build", "Adobe Flash", "UI Theme Designer"],
   },
   {
     questionText: "What OData versions are currently supported by SAPUI5?",
@@ -137,14 +137,15 @@ const questions02 = [
   {
     questionText:
       "An administrator wants to configure the SAP Fiori Launchpad for all users in one client for your S/4HANA 1809 landscape. Which of the following options represents the best way for the administrator to do this?",
-    questionHint:
-      "Use the configuration file to define URL parameters to enable/disable features when starting the SAP Fiori Launchpad.",
+    questionHint: "There are 3 correct answers to this question.",
     correctAns: [
+      "Define settings using transaction /UI2/FLP CUS CONF.",
       "Create a target mapping in a catalog and assign the catalog to all users using roles.",
       "Define settings using transaction /UI2/FLP_SYS CONF.",
-      "Define settings using transaction /UI2/FLP CUS CONF.",
     ],
-    wrongAns: [],
+    wrongAns: [
+      "Use the configuration file to define URL parameters to enable/disable features when starting the SAP Fiori Launchpad.",
+    ],
   },
   {
     questionText:
@@ -780,3 +781,7 @@ const questions02 = [
     ],
   },
 ];
+
+questionLists
+  ? questionLists.push(questions02)
+  : (questionLists = [questions02]);
