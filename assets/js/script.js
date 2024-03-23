@@ -61,8 +61,6 @@ function startQuiz(event, rewinded = false) {
 
   //invoke displayTime here to ensure time appears on the page as soon as the start button is clicked, not after 1 second
   displayTime();
-  document.querySelector("#check").disabled = false;
-
   const delayElem = document.querySelector("#delay");
   const currentDelay = Number(delayElem.value) * 1000;
   if (!isNaN(currentDelay) && currentDelay > 1000) {
@@ -129,6 +127,22 @@ function optionIsCorrect() {
 //if answer is incorrect, penalise time
 function checkAnswer(eventObject) {
   eventObject.disabled = true;
+  const nextQuestion = function () {
+    currentQuestion++;
+    eventObject.innerText = "Check Answer";
+    hideResultText();
+    if (currentQuestion < chosenQuestions.length) {
+      displayQuestion();
+    } else {
+      endQuiz();
+    }
+    eventObject.disabled = false;
+  };
+  const label = eventObject.innerText;
+  if (label.startsWith("Skip")) {
+    nextQuestion();
+    return;
+  }
   resultDiv.style.display = "block";
   if (optionIsCorrect()) {
     resultText.textContent = "Correct!";
@@ -146,27 +160,19 @@ function checkAnswer(eventObject) {
       btn.classList.add("wrong");
     }
   }
-  const f = function (t = 0, currentEtag = 0) {
-    if (currentEtag !== etag) {
-      return; // prevent side effect
+  const f = function (t = 0, currentEtag = 0, cq = 0) {
+    if (currentQuestion !== cq || currentEtag !== etag) {
+      return; // shut the count down
     }
     if (t <= 0) {
-      document.querySelector("#check").innerText = "Check Answer";
-      hideResultText();
-      //increment current question by 1
-      currentQuestion++;
-      //if we have not run out of questions then display next question, else end quiz
-      if (currentQuestion < chosenQuestions.length) {
-        displayQuestion();
-      } else {
-        endQuiz();
-      }
+      nextQuestion();
       return;
     }
-    document.querySelector("#check").innerText = `Check Answer (${t / 1000})`;
-    setTimeout(() => f(t - 1000, currentEtag), t > 1000 ? 1000 : t);
+    eventObject.innerText = `Skip (${t / 1000})`;
+    setTimeout(() => f(t - 1000, currentEtag, cq), t > 1000 ? 1000 : t);
   };
-  f(delay, etag);
+  f(delay, etag, currentQuestion);
+  eventObject.disabled = false;
 }
 
 //display scorecard and hide other divs
@@ -356,7 +362,6 @@ function cleanup() {
   currentAns.clear();
   correctAns = [];
   wrongAns = [];
-  document.querySelector("#check").disabled = false;
   document.querySelector("#check").innerText = "Check Answer";
 }
 

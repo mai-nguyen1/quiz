@@ -461,12 +461,12 @@ const questions01 = [
     questionText:
       "Which information is included in the SAPUI5 app’s manifest.json file?",
     questionHint: "There are 3 correct answers to this question.",
-    correctAns: ["SAPUI5 dependencies", "Referenced data sources"],
-    wrongAns: [
+    correctAns: [
+      "SAPUI5 dependencies",
+      "Referenced data sources",
       "App ID, Name and version",
-      "Client side data-models",
-      "Localization keys",
     ],
+    wrongAns: ["Client side data-models", "Localization keys"],
   },
   {
     questionText: "When is the use of a master-detail-pattern not recommended?",
