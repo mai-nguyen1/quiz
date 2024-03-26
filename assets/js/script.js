@@ -38,11 +38,10 @@ var currentQuestion;
 
 document.querySelector("#start-button").addEventListener("click", startQuiz);
 
-function startQuiz(event, rewinded = false, remaining = false) {
+function startQuiz(event, rewinded = false) {
   etag = Date.now();
-  chosenQuestions = rewinded ? shuffle(unclearedQuestions) 
-                  : remaining ? shuffle(remainingQuestions) : [];
-  unclearedQuestions = [];
+  chosenQuestions = shuffle(chosenQuestions);
+
   //hide any visible cards, show the question card
   hideCards();
   questionCard.removeAttribute("hidden");
@@ -371,12 +370,15 @@ function cleanup() {
 
 function rewind() {
   console.log("uncleared questions:" + unclearedQuestions);
-  if (unclearedQuestions.length > 0) startQuiz(null, true);
+  chosenQuestions =  unclearedQuestions.map((v) => v);
+  unclearedQuestions = [];
+  if (chosenQuestions.length > 0) startQuiz(null, true);
 }
 
 function remaining() {
-  console.log("remaining questions:" + unclearedQuestions);
-  if (remainingQuestions.length > 0) startQuiz(null, false, true);
+  console.log("remaining questions:" + remainingQuestions);
+  getQuestions(true);
+  if (chosenQuestions.length > 0) startQuiz(null, false);
 }
 
 function getQuestions(remaining = false) {
@@ -401,7 +403,7 @@ function getQuestions(remaining = false) {
   chosenQuestions = remaining ? remainingQuestions.map((v) => v) : uniqueQuestions.map((v) => v);
   console.log(chosenQuestions);
 
-  const tqElem = document.querySelector("#total-question");
+  let tqElem = document.querySelector("#total-question");
   let total = Number(tqElem.value);
   if (isNaN(total) || total < 1 || total > chosenQuestions.length) {
     total = chosenQuestions.length;
