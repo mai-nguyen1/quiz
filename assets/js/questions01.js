@@ -394,10 +394,10 @@ const questions01 = [
     ],
     wrongAns: [
       "The neo.json file is referred to as App Descriptor Its function is to capture data from objects",
-      "The configure.xml file is referred to as App Descriptor Its function is to configure web apps and turn",
-      "on plug-ins",
-      "The config-json file is referred to as App Descriptor Its function is to configure ports and turn on",
-      "plug-ins",
+      `The configure.xml file is referred to as App Descriptor Its function is to configure web apps and turn
+      on plug-ins`,
+      `The config-json file is referred to as App Descriptor Its function is to configure ports and turn on
+      plug-ins`,
     ],
   },
   {
