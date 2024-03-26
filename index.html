@@ -25,8 +25,9 @@
             <p></p>
             <label for="delay">Delay: </label><input type="number" value="5" id="delay" placeholder="Delay" max="60" min="1" required/><span> second(s)</span>           
             <p></p>
-            <button id=start-button class="button">Start Quiz</button>
-            <button id=rewind class="button" style="float: right; clear: none;" disabled onclick="rewind()">Rewind (0)</button>
+            <button id=start-button class="button" style="margin-bottom: 5px;" >Start Quiz</button>            
+            <button id=remaining class="button" style="float: inline-start;" disabled onclick="remaining()">Remaining (0)</button>
+            <button id=rewind class="button" style="float: inline-end; clear: none;" disabled onclick="rewind()">Rewind (0)</button>            
         </div>
 
         <div hidden id=question-card class="card">
@@ -40,7 +41,7 @@
                 <button id="option2" class="button option-button" onclick="onChoose(this)"></button>
                 <button id="option3" class="button option-button" onclick="onChoose(this)"></button>
                 <button id="option4" class="button option-button" onclick="onChoose(this)"></button>
-                <button id="check" class="button check" style="float: right;" onclick="checkAnswer(this)">Check Answer</button>
+                <button id="check" class="button check" style="float: right; width: 150px;" onclick="checkAnswer(this)">Check Answer</button>
             </div>
 
             <div id=result-div>
@@ -73,9 +74,9 @@
     </main>
     
     <script src="./assets/js/script.js" defer></script>
-    <script src="./assets/js/questions00.js" defer></script>
-    <script src="./assets/js/questions01.js" defer></script>
-    <script src="./assets/js/questions02.js" defer></script>    
+    <script src="./assets/js/questions.js" defer></script>
+    <!-- <script src="./assets/js/questions01.js" defer></script> -->
+    <!-- <script src="./assets/js/questions02.js" defer></script>     -->
 </body>
 
 </html>

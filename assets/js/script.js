@@ -2,6 +2,7 @@ var questionLists = [];
 
 var chosenQuestions = [];
 var unclearedQuestions = [];
+var remainingQuestions = [];
 
 const startCard = document.querySelector("#start-card");
 const questionCard = document.querySelector("#question-card");
@@ -37,9 +38,10 @@ var currentQuestion;
 
 document.querySelector("#start-button").addEventListener("click", startQuiz);
 
-function startQuiz(event, rewinded = false) {
+function startQuiz(event, rewinded = false, remaining = false) {
   etag = Date.now();
-  chosenQuestions = rewinded ? shuffle(unclearedQuestions) : [];
+  chosenQuestions = rewinded ? shuffle(unclearedQuestions) 
+                  : remaining ? shuffle(remainingQuestions) : [];
   unclearedQuestions = [];
   //hide any visible cards, show the question card
   hideCards();
@@ -281,6 +283,11 @@ function returnToStart() {
   rewindBtn.disabled = uncleared < 1;
   rewindBtn.innerText = `Rewind (${uncleared})`;
 
+  const remainingBtn = document.querySelector("#remaining");
+  const remaining = remainingQuestions.length;
+  remainingBtn.disabled = remaining < 1;
+  remainingBtn.innerText = `Remaing (${remaining})`;
+
   startCard.removeAttribute("hidden");
 }
 
@@ -363,18 +370,43 @@ function cleanup() {
 }
 
 function rewind() {
+  console.log("uncleared questions:" + unclearedQuestions);
   if (unclearedQuestions.length > 0) startQuiz(null, true);
 }
 
-function getQuestions() {
-  const chosen = Math.floor(Math.random() * questionLists.length);
-  const chosenList = questionLists[chosen];
-  console.log("questions", chosen);
+function remaining() {
+  console.log("remaining questions:" + unclearedQuestions);
+  if (remainingQuestions.length > 0) startQuiz(null, false, true);
+}
+
+function getQuestions(remaining = false) {
+  /*const chosen = Math.floor(Math.random() * questionLists.length);
+  //const chosenList = questionLists[chosen];
+  chosenList = [...questions00, ...questions01, ...questions02];
+  console.log("questions", chosenList);
   chosenQuestions = chosenList.map((v) => v); // clone
+
+  const key = 'questionText';
+  const unique = [...new Map(chosenQuestions.map(item => [item[key], item])).values()];
+  console.log(JSON.stringify(unique));
+  
+  const duplicates = chosenQuestions.reduce((acc, obj, index) => {
+    const duplicates = chosenQuestions.filter((item, i) => i !== index && item[key] === obj[key]);
+    if (duplicates.length > 0 && !acc.some((dup) => dup[key] === obj[key])) {
+      acc.push(obj);
+    }
+    return acc;
+  }, []);
+  console.log(duplicates);*/
+  chosenQuestions = remaining ? remainingQuestions.map((v) => v) : uniqueQuestions.map((v) => v);
+  console.log(chosenQuestions);
+
   const tqElem = document.querySelector("#total-question");
   let total = Number(tqElem.value);
   if (isNaN(total) || total < 1 || total > chosenQuestions.length) {
     total = chosenQuestions.length;
   }
-  chosenQuestions = shuffle(chosenQuestions).slice(0, total);
+  var shuffleQuestions = shuffle(chosenQuestions);
+  chosenQuestions = shuffleQuestions.slice(0, total);
+  remainingQuestions = shuffleQuestions.slice(total);
 }
