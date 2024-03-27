@@ -155,7 +155,8 @@ const uniqueQuestions = [
   },
   {
     questionText:
-      "Scenario: An e-commerce company is developing an SAPUI5 application to manage customer orders. The application needs to handle large datasets and ensure efficient data retrieval./nWhich of the following OData features would be essential for this purpose?",
+      `Scenario: An e-commerce company is developing an SAPUI5 application to manage customer orders. The application needs to handle large datasets and ensure efficient data retrieval.
+      Which of the following OData features would be essential for this purpose?`,
     questionHint: "There are 3 correct answers to this question.",
     correctAns: ["Filtering", "Batch operations", "Pagination"],
     wrongAns: ["Sorting", "Aggregation"],
@@ -2036,10 +2037,7 @@ const uniqueQuestions = [
     Which of the following SAPUI5 features would be essential for this purpose?`,
     questionHint: "There are 3 correct answers to this question",
     correctAns: [
-      "Responsive Design",
-
-      "Data Binding",
-
+      "Responsive Design","Data Binding",
       "Use of Standard Controls",
     ],
     wrongAns: ["Direct CSS Styling", "Fragment Loading"],
@@ -2449,4 +2447,523 @@ const uniqueQuestions = [
     correctAns: ["Dev Spaces"],
     wrongAns: ["Dev Zones", "Workspaces", "App Areas"],
   },
+  {
+    questionText: `You are modeling a new role for your SAP Fiori Launchpad users. Which of the following steps is an
+    optional configuration step?
+    `,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Create Group and Assign Tile"
+    ],    
+    wrongAns: [
+      "Create Tiles and Target Mappings", "Create Catalog",
+      "Assign Catalog to Role"
+    ],
+  },
+  {
+    questionText: `Which SAP Fiori app types require the SAP HANA database?`,
+    questionHint: "There are 2 correct answers to this question.",
+    correctAns: [
+      "Analytical", "Factsheet"
+    ],    
+    wrongAns: [
+      "Legacy", "Transactional"
+    ],
+  },
+  {
+    questionText: `What names have the view ports of the SAP Fiori launchpad?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "Workspace", "Notification area",
+      "Me area"
+    ],    
+    wrongAns: [
+      "Desktop"
+    ],
+  },
+  {
+    questionText: `In SAP Fiori Elements, which annotation is used to define the UI behavior of a field, such as making it
+    read-only or mandatory?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "UI.DataField"
+    ],    
+    wrongAns: [
+      "UI.SelectionField", "UI.FieldGroup",
+      "UI.DataFieldForAnnotation"
+    ],
+  },
+  {
+    questionText: `Which areas are part of an Analytic List Page?`,
+    questionHint: "There are 3 correct answers to this question",
+    correctAns: [
+      "Content Area", "Visual Filters",
+      "Title Area"
+    ],    
+    wrongAns: [
+      "Selection Fields"
+    ],
+  },
+  {
+    questionText: `A business user is unable to find an application on the SAP Fiori Launchpad or on the App Finder. Which
+    of the following options could explain why the tile is unavailable?`,
+    questionHint: "There are 3 correct answers to this question",
+    correctAns: [
+      "The user does not have the proper PFCG role assigned to see the application or tile", "The catalogs assigned to the user do not contain the relevant application or tile.", "",
+      "The target mapping for the tile is missing in the catalog."
+    ],    
+    wrongAns: [
+      "The end user is missing the required group containing the tile.",
+      "The OData service authorization is missing"
+    ],
+  },
+  {
+    questionText: `What impact does SAP Fiori have on Business`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "Re-imagine processes", "Digitalization",
+      "Simplification"
+    ],    
+    wrongAns: [
+      "Web and open standards", "User-centered"
+    ],
+  },
+  {
+    questionText: `What are the SAP Fiori principles?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "Rolebased", "Adaptive",
+      "Coherent"
+    ],    
+    wrongAns: [
+      "Complex", "Creative"
+    ],
+  },
+  {
+    questionText: `Which types of services are known or supported by the SAP Fiori launchpad?`,
+    questionHint: "There are 2 correct answers to this question.",
+    correctAns: [
+      "Platform-specific services", "Platform-independent services"
+    ],    
+    wrongAns: [
+      "UI5 services", "UI2 services"
+    ],
+  },
+  {
+    questionText: `As which app type does SAP Business Application Studio deploy an SAPUI5 app to the ABAP server?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "BSP"
+    ],    
+    wrongAns: [
+      "OpenUI5", "HTML5",
+      "ABAP"
+    ],
+  },
+  {
+    questionText: `What annotation is used to define the heading of list report?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "@UI.headerInfor.typeNamePlural"
+    ],    
+    wrongAns: [
+      "@UI.header.title", "@UI.LineItem.headerTitle",
+      "@UI.headerInfo.typeName"
+    ],
+  },
+  {
+    questionText: `Which of the following best describes the "Simple" design principle of SAP Fiori?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Applications should focus on essential tasks and hide unnecessary information."
+    ],    
+    wrongAns: [
+      "Applications should have complex navigation structures.", "Applications should be designed for a single device type",
+      "Applications should display all available data to the user."
+    ],
+  },
+  {
+    questionText: `How do you set a field as the title for a business entity?`,
+    questionHint: "Please choose the correct answer",
+    correctAns: [
+      "Add @UI.headerInfo.title.value for the CDS view and reference it to the field"
+    ],    
+    wrongAns: [
+      "Add @UI.headerInfo.title for the CDS view and reference it to field", "Add @UI.title annotation for that field",
+      "Add @UI.headerInfo.title annotation for that field"
+    ],
+  },
+  {
+    questionText: `What visibility does a OData Model instance have when created automatically during application start?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Component scope"
+    ],    
+    wrongAns: [
+      "Controller scope only", "View scope only",
+      "Control scope only"
+    ],
+  },
+  {
+    questionText: `Why does it make sense to use the navigation API of SAPUI5 and not the concepts like the eventbus or
+    the navcontainer functions of the base application?`,
+    questionHint: "There are 2 correct answers to this question.",
+    correctAns: [
+      "Using the navigation API the configuration of routes and targets are clear separated from the application implementation", 
+      "Using the navigation API it is possible to use bookmarks"
+    ],    
+    wrongAns: [
+      "The eventbus is deprecated and shouldn't be used anymore", "The Navcontainer of the App-object is not accessible inside component based application"
+    ],
+  },
+  {
+    questionText: `Which of the following activities allow you to store your changes in a local Git repository?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Commit"
+    ],    
+    wrongAns: [
+      "Save", "Clone",
+      "Push"
+    ],
+  },
+  {
+    questionText: `Which of the following can you use to extend an SAP Fiori Elements application?`,
+    questionHint: "There are 2 correct answers to this question.",
+    correctAns: [
+      "App extension", "CDS extension"
+    ],    
+    wrongAns: [
+      "Adaption extensions", "ABAP extension"
+    ],
+  },
+  {
+    questionText: `What can your customer use a custom SAP Fiori client for?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "To apply custom branding", "To wrap the application with SAP Mobile Secure",
+      "To add additional plugins to the application"
+    ],    
+    wrongAns: [
+      "To create non-Cordova hybrid application containers", "To build the SAP Fiori Client with a customized communication protocol"
+    ],
+  },
+  {
+    questionText: `What goals does the SAPUI5 framework have`,
+    questionHint: "There are 2 correct answers to this question",
+    correctAns: [
+      "User Interface technology for building and adapting client applications",
+      "Providing an extensible framework for building desktop and mobile applications"
+    ],    
+    wrongAns: [
+      "Providing a lightweight programming model for desktop only applications", 
+      "User Interface technology for building and adapting server based applications"
+    ],
+  },
+  {
+    questionText: `What are Smart Controls?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Application templates for SAPUI5 applications to optimize development"
+    ],    
+    wrongAns: [
+      "The predecessor of Smart Templates", "Basic SAPUI5 controls recommended for standalone usage",
+      "SAPUI5 controls that can be rendered dynamically according to OData service annotations"
+    ],
+  },
+  {
+    questionText: `Scenario: A company is developing a series of SAP Fiori applications that need to be integrated with their existing on-premise SAP systems.
+    Which of the following tools or services in SAP BTP would facilitate this integration?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "SAP BTP Integration Suite", "SAP Business Application Studio",
+      "SAP Cloud Connector"
+    ],    
+    wrongAns: [
+      "SAP Data Intelligence",
+      "SAP BTP Extension Suite"
+    ],
+  },
+  {
+    questionText: `Scenario: A company is developing a series of applications for its sales team. 
+    They want to ensure UI consistency and reduce development time.
+    Which of the following would be the most suitable approach?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "Custom SAPUI5 development for each application", "Use of SAP Fiori Elements",
+      "Use of SmartControls"
+    ],    
+    wrongAns: [
+      "Integrating third-party UI libraries", "Manual CSS styling for each application"
+    ],
+  },
+  {
+    questionText: `Your customer requires that the SAPUI5 design of all apps reference a specific and consistent look and
+    feel. What do you create?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "Create a theme using the Theme Designer implementing the specific look and feel and reference this theme in the bootstrap of all apps", 
+      "Create a css file using the Web IDE implementing the specific look and feel and reference this css in the bootstrap of all apps",
+      "Create a model using the Web IDE implementing the specific look and feel and reference this model in the bootstrap of all apps"
+    ],    
+    wrongAns: [
+      "Create a global JavaScript file using the Web IDE implementing the specific look and feel and reference this file in the bootstrap of all apps",
+      "Create a module using the Web IDE implementing the specific look and feel and reference this module in the bootstrap of all apps"
+    ],
+  },
+  {
+    questionText: `What of the following is true for implementing your own renderer?`,
+    questionHint: "There are 3 correct answer to this question.",
+    correctAns: [
+      "Implement the Renderer using AMD syntax", "Assign a reference to the renderer property of the UI control",
+      "Implement a renderer class derived from sap.ui.core.Renderer in a separate file"
+    ],    
+    wrongAns: [
+      "Implement the render function inside the control"
+    ],
+  },
+  {
+    questionText: `How do you integrate SAPUI5 in a Kapsel/Hybrid app?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Add the sap-mobile-hybrid.js file to the Hybrid app"
+    ],    
+    wrongAns: [
+      "Add the SAPUI5 bootstrap code into index.html", "Create a new Kapsel plugin using SAPUI5",
+      "Configure the SAPUI5 resources in the config.xml file of the Hybrid app"
+    ],
+  },
+  {
+    questionText: `What control in the index.html file is used support letterboxing if necessary?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "sap.ui.Shell"
+    ],    
+    wrongAns: [
+      "sap.ui.core.ComponentContainer", "sap.ui.core.View",
+      "sap.ui.core.Component"
+    ],
+  },
+  {
+    questionText: `You perform a QUnit test with the following syntactical options. Which call returns true when you execute it?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Assert.strictEqual(0,-0,\"true\");"
+    ],    
+    wrongAns: [
+      "Assert.strictEqual(0,”0”,”true”)", "Assert.strictEqual(0,””,”true”)",
+      "Assert.strictEqual(0,null,”true”)"
+    ],
+  },
+  {
+    questionText: `To which of the following does an SAP Fiori tile point directly?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "A target mapping with a semantic object and an action"
+    ],    
+    wrongAns: [
+      "A semantic object", "An action",
+      "An SAP Fiori app"
+    ],
+  },
+  {
+    questionText: `Scenario: A company is deploying multiple SAP Fiori applications to its production environment. They
+    want to ensure a smooth deployment process without any conflicts or issues.
+    Which of the following tools would be essential for this deployment process?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "SAP Fiori Launchpad", "SAP Fiori Inspector",
+      "SAP Transport Management System (TMS)"
+    ],    
+    wrongAns: [
+      "SAP Fiori Designer", "SAP Fiori Test Recorder"
+    ],
+  },
+  {
+    questionText: `What message types are known by SAPUI5?`,
+    questionHint: "There are 2 correct answers to this question.",
+    correctAns: [
+      "Server messages", "Control messages"
+    ],    
+    wrongAns: [
+      "Log messages", "UI-messages"
+    ],
+  },
+  {
+    questionText: `What is SAP Fiori floorplan?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "A floorplan is a UI pattern that provides consistent UX"
+    ],    
+    wrongAns: [
+      "A floorplan is a layout of SAPUI5", "A floorplan is a layout of the SAP web dynpro layouts for SAP Fiori apps",
+      "A floorplan defines the overall layout of an application"
+    ],
+  },
+  {
+    questionText: `In SAPUI5 applications, which model provides seamless integration with OData services and supports
+    two-way data binding?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "OData Model"
+    ],    
+    wrongAns: [
+      "JSON Model", "Resource Model", 
+      "XML Model"
+    ],
+  },
+  {
+    questionText: `Which of the following is NOT a type of view supported by SAPUI5?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Python View"
+    ],    
+    wrongAns: [
+      "JSON View", "XML View",
+      "JavaScript View"
+    ],
+  },
+  {
+    questionText: `In a SAP Fiori hub deployment, where is the SAPUI5 application code stored for a transactional app?`,
+    questionHint: "Please choose the correct answer",
+    correctAns: [
+      "SAP Back-End Server (BES)"
+    ],    
+    wrongAns: [
+      "SAP Web Dispatcher", "SAP Front-End Server (FES)",
+      "SAP HANA XS Engine"
+    ],
+  },
+  {
+    questionText: `Which different app types can be found in SAP Fiori?`,
+    questionHint: "There are 2 correct answers to this question.",
+    correctAns: [
+      "Conceptual", "Technical"
+    ],    
+    wrongAns: [
+      "Infrastructural", "Mobile",
+      "Industrial"
+    ],
+  },
+  {
+    questionText: `Which of the following should you avoid with regard to golden rule "Every SAP Fiori app must run as a web
+    app"?`,
+    questionHint: "There are 4 correct answers to this question.",
+    correctAns: [
+      "Calling UI2 services directly instead of using APIs", "Use of platform-specific functionality without availability check",
+      "Absolute URLs generated in front or back-end", "Hard dependencies between apps"
+    ],    
+    wrongAns: [
+      "Using SAPUI5"
+    ],
+  },
+  {
+    questionText: `In the SAP Fiori design approach, which principle emphasizes the importance of providing users with
+    feedback and interactive elements to create an engaging experience?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Delightful"
+    ],    
+    wrongAns: [
+      "Coherent", "Adaptive",
+      "Role-based"
+    ],
+  },
+  {
+    questionText: `What are the main artefacts of an SAPUI5 applications?`,
+    questionHint: "There are 3 correct answers to this question",
+    correctAns: [
+      "Controllers", "Views",
+      "Models"
+    ],    
+    wrongAns: [
+      "CSS", "Control"
+    ],
+  },
+  {
+    questionText: `Choose available options for creating a value help for a selection field.`,
+    questionHint: "There are 2 correct answers to this question",
+    correctAns: [
+      "By adding a value help annotation", "By adding a foreign key annotation"
+    ],    
+    wrongAns: [
+      "If the domain which associates to the field, has a fixed value, the value help will be generated automatically. ",
+      "By adding annotation to list all possible in source code of CDS"
+    ],
+  },
+  {
+    questionText: `Which of the following is NOT a type of SAP Fiori Element?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Detail Page"
+    ],    
+    wrongAns: [
+      "List Report", "Overview Page",
+      "Object Page"
+    ],
+  },
+  {
+    questionText: `What areas are mandatory in the tile layout?`,
+    questionHint: "There are 2 correct answers to this question.",
+    correctAns: [
+      "Header area", "Content area"
+    ],    
+    wrongAns: [
+      "Status area", "Subtitle",
+      "KPI area"
+    ],
+  },  {
+    questionText: `What factors are key to user experience with user assistance?`,
+    questionHint: "There are 3 correct answers to this question.",
+    correctAns: [
+      "Instant", "Context-sensitive",
+      "Seamless"
+    ],    
+    wrongAns: [
+      "Confusing", "Error prone"
+    ],
+  },  {
+    questionText: `Which of the following is a key benefit of using SAP Fiori Elements in application development?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Reduced development effort"
+    ],    
+    wrongAns: [
+      "Limited UI consistency", "Restricted to desktop applications",
+      "Custom coding for each application"
+    ],
+  },  {
+    questionText: `What is the name of the aggregation of the sap.m.App control where the UI-controls are aggregated?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "pages"
+    ],    
+    wrongAns: [
+      "fullPages", "detailPages",
+      "masterPages"
+    ],
+  },
+  {
+    questionText: `What approach gives you the most flexibility for your SAPUI5 application?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Using Component based approach"
+    ],    
+    wrongAns: [
+      "Using View only based approach", "Using Controller based approach",
+      "Implement complex UIs in the index.html"
+    ],
+  },
+  {
+    questionText: `What is the purpose of SAP Build?`,
+    questionHint: "Please choose the correct answer.",
+    correctAns: [
+      "Provides tooling to support the designer during various phases of design thinking"
+    ],    
+    wrongAns: [
+      "Provides tooling to support the developer during development of back-end services",
+      "Provides tooling to support the developer during development of SAPUI5 applications",
+    ],
+  },  
+  //file idx = 4
 ];
