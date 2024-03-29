@@ -1,3 +1,5 @@
+const unclearedQuestionsKey = "uncleared_questions";
+
 var questionLists = [];
 
 var chosenQuestions = [];
@@ -15,6 +17,11 @@ var etag = 0;
 var correctAns = [];
 var wrongAns = [];
 const currentAns = new Set();
+
+window.addEventListener("DOMContentLoaded", () => {
+  loadUnclearedQuestions();
+  updateRewindBtn();
+});
 
 function hideCards() {
   startCard.setAttribute("hidden", true);
@@ -182,6 +189,7 @@ function endQuiz() {
   hideCards();
   scoreCard.removeAttribute("hidden");
   scoreElem.textContent = score;
+  saveUnclearedQuestions();
 }
 
 const submitButton = document.querySelector("#submit-button");
@@ -267,7 +275,7 @@ clearButton.addEventListener("click", clearHighscores);
 
 //clear local storage and display empty leaderboard
 function clearHighscores() {
-  localStorage.clear();
+  localStorage.removeItem("leaderboardArray");
   renderLeaderboard();
 }
 
@@ -277,11 +285,7 @@ backButton.addEventListener("click", returnToStart);
 //Hide leaderboard card show start card
 function returnToStart() {
   hideCards();
-  const rewindBtn = document.querySelector("#rewind");
-  const uncleared = unclearedQuestions.length;
-  rewindBtn.disabled = uncleared < 1;
-  rewindBtn.innerText = `Rewind (${uncleared})`;
-
+  updateRewindBtn();
   const remainingBtn = document.querySelector("#remaining");
   const remaining = remainingQuestions.length;
   remainingBtn.disabled = remaining < 1;
@@ -370,7 +374,7 @@ function cleanup() {
 
 function rewind() {
   console.log("uncleared questions:" + unclearedQuestions);
-  chosenQuestions =  unclearedQuestions.map((v) => v);
+  chosenQuestions = unclearedQuestions.map((v) => v);
   unclearedQuestions = [];
   if (chosenQuestions.length > 0) startQuiz(null, true);
 }
@@ -400,7 +404,9 @@ function getQuestions(remaining = false) {
     return acc;
   }, []);
   console.log(duplicates);*/
-  chosenQuestions = remaining ? remainingQuestions.map((v) => v) : uniqueQuestions.map((v) => v);
+  chosenQuestions = remaining
+    ? remainingQuestions.map((v) => v)
+    : uniqueQuestions.map((v) => v);
   console.log(chosenQuestions);
 
   let tqElem = document.querySelector("#total-question");
@@ -411,4 +417,23 @@ function getQuestions(remaining = false) {
   var shuffleQuestions = shuffle(chosenQuestions);
   chosenQuestions = shuffleQuestions.slice(0, total);
   remainingQuestions = shuffleQuestions.slice(total);
+}
+
+function updateRewindBtn() {
+  const rewindBtn = document.querySelector("#rewind");
+  const uncleared = unclearedQuestions.length;
+  rewindBtn.disabled = uncleared < 1;
+  rewindBtn.innerText = `Rewind (${uncleared})`;
+}
+
+function saveUnclearedQuestions() {
+  localStorage.setItem(
+    unclearedQuestionsKey,
+    JSON.stringify(unclearedQuestions)
+  );
+}
+
+function loadUnclearedQuestions() {
+  const jsonData = localStorage.getItem(unclearedQuestionsKey);
+  unclearedQuestions = jsonData ? JSON.parse(jsonData) : [];
 }
