@@ -277,6 +277,7 @@ clearButton.addEventListener("click", clearHighscores);
 function clearHighscores() {
   localStorage.removeItem("leaderboardArray");
   renderLeaderboard();
+  unclearedQuestions = [];
 }
 
 const backButton = document.querySelector("#back-button");
@@ -375,7 +376,7 @@ function cleanup() {
 function rewind() {
   console.log("uncleared questions:" + unclearedQuestions);
   chosenQuestions = unclearedQuestions.map((v) => v);
-  unclearedQuestions = [];
+  //unclearedQuestions = [];
   if (chosenQuestions.length > 0) startQuiz(null, true);
 }
 
@@ -426,7 +427,10 @@ function updateRewindBtn() {
   rewindBtn.innerText = `Rewind (${uncleared})`;
 }
 
-function saveUnclearedQuestions() {
+function saveUnclearedQuestions() {  
+  const key = 'questionText';
+  var unitUnclearedQuestions = [...new Map(unclearedQuestions.map(item => [item[key], item])).values()];
+  unclearedQuestions = unitUnclearedQuestions.map((v) => v);
   localStorage.setItem(
     unclearedQuestionsKey,
     JSON.stringify(unclearedQuestions)
