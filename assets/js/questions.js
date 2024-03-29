@@ -643,7 +643,7 @@ const uniqueQuestions = [
   },
   {
     questionText:
-      "What result do you expect from the de-composition and re-composition phases? ",
+      "What result do you expect from the de-composition and re-composition phases?",
     questionHint: "There are 3 correct answers to this question.",
     correctAns: [
       "A purpose-built app to support personas",
@@ -2185,7 +2185,7 @@ const uniqueQuestions = [
     questionHint: "Please choose the correct answer",
     correctAns: ["Central entry point to SAP Fiori apps"],
     wrongAns: [
-      "Database management tool ",
+      "Database management tool",
       "Deployment platform for SAP HANA",
       "Code editor for SAPUI5",
     ],
@@ -2260,7 +2260,7 @@ const uniqueQuestions = [
     wrongAns: [
       "SAP BTP Integration Suite",
       "SAP Data Intelligence",
-      "SAP BTP Extension Suite ",
+      "SAP BTP Extension Suite",
     ],
   },
   {
@@ -2887,7 +2887,7 @@ const uniqueQuestions = [
       "By adding a value help annotation", "By adding a foreign key annotation"
     ],    
     wrongAns: [
-      "If the domain which associates to the field, has a fixed value, the value help will be generated automatically. ",
+      "If the domain which associates to the field, has a fixed value, the value help will be generated automatically.",
       "By adding annotation to list all possible in source code of CDS"
     ],
   },
