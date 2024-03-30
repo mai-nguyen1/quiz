@@ -1903,14 +1903,11 @@ const uniqueQuestions = [
     questionHint: "There are 3 correct answers to this question.",
     correctAns: [
       "Add Annotations to the underlying CDS view",
-
       "Add Annotation to the Annotation file present as a part of WebIDE project using Annotation modeler",
-
       "Add Annotation with the help of a Metadata Extension",
     ],
     wrongAns: [
       "Add Annotation to the underlying Database Table",
-
       "Add Annotations to the manifest file present as a part of WebIDE project using the Descriptor Edit",
     ],
   },
@@ -1954,9 +1951,7 @@ const uniqueQuestions = [
     correctAns: ["Ensures separation of concerns"],
     wrongAns: [
       "Combines business logic with UI",
-
       "Reduces the need for data binding",
-
       "Eliminates the need for controllers",
     ],
   },
@@ -1985,8 +1980,7 @@ const uniqueQuestions = [
     questionHint: "There are 3 correct answers to this question.",
     correctAns: [
       "The Analytical entity set, returns all data, needed to analyze the client",
-      `Analyzes the use of the database and runs faster when SAP HANA is used as database compared
-      to a normal entity set.`,
+      "Analyzes the use of the database and runs faster when SAP HANA is used as database compared to a normal entity set.",
       "The Analytical entity set, generates a new field for primary key.",
     ],
     wrongAns: [
@@ -2001,9 +1995,7 @@ const uniqueQuestions = [
     ],
     wrongAns: [
       "The layout is deprecated, which means you should not use the layout anymore",
-
       "The dynamic page layout is only used for analytical applications",
-
       "The layout is only used for master-detail scenario",
     ],
   },
@@ -2048,9 +2040,7 @@ const uniqueQuestions = [
     correctAns: ["CREATE_DEEP_ENTITY"],
     wrongAns: [
       "CREATE_INSERT_ENTITY",
-
       "CREATE_INSERT_DEEP_ENTITY",
-
       "CREATE_DEEP_INSERT_ENTITY",
     ],
   },
@@ -2066,12 +2056,10 @@ const uniqueQuestions = [
     questionHint: "There are 2 correct answers to this question.",
     correctAns: [
       "Set setting variantManagementHidden to true",
-
       "Add setting to enable smart Variant Managemen",
     ],
     wrongAns: [
       "Set setting variantManagementHidden to false",
-
       "Add setting to disable smart variant Management",
     ],
   },
@@ -2081,9 +2069,7 @@ const uniqueQuestions = [
     correctAns: ["data-sap-ui-theme of <script> tag"],
     wrongAns: [
       "data-sap-ui-theme of the <head> tag",
-
-      "sap-ui-theme of <body> ta",
-
+      "sap-ui-theme of <body> tag",
       "sap-ui-theme of a <title> tag",
     ],
   },
@@ -2103,9 +2089,7 @@ const uniqueQuestions = [
     correctAns: ["Define the property width of the type sap.ui.core.CSSSize"],
     wrongAns: [
       "Define the property width of the type sap.ui.core.Integer",
-
       "Define the property width of the type sap.ui.core.type.CSSSize",
-
       "Define the property width of the type string",
     ],
   },
@@ -2283,8 +2267,7 @@ const uniqueQuestions = [
     ],
     wrongAns: [
       "You want to embed the SAP Fiori launchpad or overview page into one of the columns",
-      `You want to split a single object into multiple columns or display only a small amount of
-    information `,
+      "You want to split a single object into multiple columns or display only a small amount of information",
       "You want to open multiple instances of the same object type",
     ],
   },
@@ -2383,7 +2366,7 @@ const uniqueQuestions = [
       'Declare an association using "association to" statement',
     ],
     wrongAns: [
-      `Declare an association using "left outer join" statement`,
+      "Declare an association using \"left outer join\" statement",
       "Expose fields in the association by writing each field in projection list",
     ],
   },
