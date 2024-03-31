@@ -1,5 +1,5 @@
 const uniqueQuestions = [
-  /*{
+  {
     questionText:
       "What best practices of the following list are best practices for SAPUI?",
     questionHint: "There are 4 correct answers to this question.",
@@ -2932,7 +2932,7 @@ const uniqueQuestions = [
       "Provides tooling to support the developer during development of back-end services",
       "Provides tooling to support the developer during development of SAPUI5 applications",
     ],
-  }, */
+  },
   // New questions
   {
     questionText: "You develop an SAPUI5 app that can be extended. To allow your customer notifications, you set up a hook method. What activities are required to implement a hook method?",
